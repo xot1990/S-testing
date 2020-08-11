@@ -65,11 +65,16 @@
     <Compile Include="Assets\ArrowScript.cs" />
     <Compile Include="Assets\ButtonUI.cs" />
     <Compile Include="Assets\camera.cs" />
+    <Compile Include="Assets\CrestScript.cs" />
     <Compile Include="Assets\Forse.cs" />
     <Compile Include="Assets\MovePlanet.cs" />
+    <Compile Include="Assets\RemoveScript.cs" />
+    <Compile Include="Assets\ResetScript.cs" />
+    <Compile Include="Assets\Ship.cs" />
     <Compile Include="Assets\ShipStatus.cs" />
     <Compile Include="Assets\Speedmeter.cs" />
     <Compile Include="Assets\StationScript.cs" />
+    <Compile Include="Assets\SwitchingControlModes.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/X5X/Documents/S testing/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

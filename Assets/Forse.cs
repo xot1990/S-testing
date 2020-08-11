@@ -32,8 +32,7 @@ public class Forse : MonoBehaviour
     }
 
     public void Forses()
-    {
-        
+    {       
         
         switch (gameObject.name)
         {

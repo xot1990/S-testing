@@ -21,9 +21,17 @@ public class Speedmeter : MonoBehaviour
     
     void Update()
     {
-        Velocity = Ship.GetComponent<Rigidbody2D>().velocity.magnitude;
-        AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-        _velosity.text = "Velocity "+Velocity;
-        _angularvelocity.text = "AngVelocity"+AngularVelosity;
+        if (gameObject.name == "SpeedMeter")
+        {
+            Velocity = Ship.GetComponent<Rigidbody2D>().velocity.magnitude;
+            AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
+            _velosity.text = "Velocity \n" + Velocity;
+            _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
+        }
+        if (gameObject.name == "CSpeedMeter")
+        {            
+            _velosity.text = "X Pull " + ShipStatus.ValueJoystickX;
+            _angularvelocity.text = "Y Pull " + ShipStatus.ValueJoystickY;
+        }
     }
 }
