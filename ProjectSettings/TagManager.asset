@@ -10,6 +10,7 @@ TagManager:
   - Camera 2
   - Back
   - Star
+  - Object
   layers:
   - Default
   - TransparentFX

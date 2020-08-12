@@ -24,7 +24,7 @@ public class MovePlanet : MonoBehaviour
     void Start()
     {
         RandomAngle = Random.Range(10, 360);
-        Star = GameObject.FindGameObjectWithTag("Star");
+        Star = GameObject.Find("Star");
         b = Vector3.Distance(Star.transform.position, transform.position);
         a = b * 0.6f;
         c = b;
