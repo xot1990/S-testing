@@ -6570,6 +6570,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatherShip
       objectReference: {fileID: 0}
+    - target: {fileID: 3511041100548731189, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632430960301738368, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554638417228694294, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085296529065856906, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255634946286012012, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271210506638479569, guid: 23aeaf8015e48e345bc1908c8016bb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23aeaf8015e48e345bc1908c8016bb18, type: 3}
 --- !u!1 &1911597752

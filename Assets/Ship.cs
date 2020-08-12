@@ -86,7 +86,8 @@ public class Ship : MonoBehaviour
 
             if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
             {
-
+                ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForce(-ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.normalized*10);
+                if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0 && ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f) ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
     }
