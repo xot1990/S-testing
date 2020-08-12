@@ -24,4 +24,6 @@ public class ShipStatus : MonoBehaviour
     public static GameObject ShuntingDarkPink;
     public static GameObject ShuntingSee;
     public static bool StartEction;
+    public static bool MoveX;
+    public static bool MoveY;
 }
