@@ -29,6 +29,12 @@ public class ButtonUI : MonoBehaviour
                         ShipStatus.Marsh3 = false;
                     }
                     break;
+                case "STB":
+                    {
+                        Debug.Log("done");
+                        ShipStatus.STB = false;
+                    }
+                    break;
             }
             GetComponentInChildren<Toggle>().isOn = false;
             presed = false;
@@ -50,6 +56,11 @@ public class ButtonUI : MonoBehaviour
                 case "M3":
                     {
                         ShipStatus.Marsh3 = true;
+                    }
+                    break;
+                case "STB":
+                    {
+                        ShipStatus.STB = true;
                     }
                     break;
             }

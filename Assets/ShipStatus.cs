@@ -7,6 +7,7 @@ public class ShipStatus : MonoBehaviour
     public static bool Marsh1 = true;
     public static bool Marsh2 = true;
     public static bool Marsh3 = true;
+    public static bool STB = true;
     public static bool shuntingGreen;
     public static bool shuntingBlue;
     public static bool shuntingYellow;
