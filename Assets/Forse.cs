@@ -38,7 +38,7 @@ public class Forse : MonoBehaviour
         {
             case "Green":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value, new Vector2(Ship.transform.Find("Green").position.x, Ship.transform.Find("Green").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Green").position.x, Ship.transform.Find("Green").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("Green").position, Quaternion.Euler(90, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -46,7 +46,7 @@ public class Forse : MonoBehaviour
                 break;
             case "Blue":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value, new Vector2(Ship.transform.Find("Blue").position.x, Ship.transform.Find("Blue").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Blue").position.x, Ship.transform.Find("Blue").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("Blue").position, Quaternion.Euler(-90, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -54,7 +54,7 @@ public class Forse : MonoBehaviour
                 break;
             case "Yellow":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value, new Vector2(Ship.transform.Find("Yellow").position.x, Ship.transform.Find("Yellow").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Yellow").position.x, Ship.transform.Find("Yellow").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("Yellow").position, Quaternion.Euler(180, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -62,7 +62,7 @@ public class Forse : MonoBehaviour
                 break;
             case "Pink":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value, new Vector2(Ship.transform.Find("Pink").position.x, Ship.transform.Find("Pink").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Pink").position.x, Ship.transform.Find("Pink").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("Pink").position, Quaternion.Euler(180, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -70,7 +70,7 @@ public class Forse : MonoBehaviour
                 break;
             case "DarkPink":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value, new Vector2(Ship.transform.Find("DarkPink").position.x, Ship.transform.Find("DarkPink").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("DarkPink").position.x, Ship.transform.Find("DarkPink").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("DarkPink").position, Quaternion.Euler(-180, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -78,7 +78,7 @@ public class Forse : MonoBehaviour
                 break;
             case "See":
                 {
-                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value, new Vector2(Ship.transform.Find("See").position.x, Ship.transform.Find("See").position.y));
+                    Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("See").position.x, Ship.transform.Find("See").position.y));
                     ArrowScript.angle = Vector2.SignedAngle(transform.up, Ship.GetComponent<Rigidbody2D>().velocity);
                     GameObject par = Instantiate(Part, Ship.transform.Find("See").position, Quaternion.Euler(-180, 90, 90));
                     par.transform.parent = Ship.transform;
@@ -94,19 +94,19 @@ public class Forse : MonoBehaviour
                 {
                     if (ShipStatus.Marsh1)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100, new Vector2(Ship.transform.Find("Marsh1").position.x, Ship.transform.Find("Marsh1").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100 * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh1").position.x, Ship.transform.Find("Marsh1").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh1").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
                     }
                     if (ShipStatus.Marsh2)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100, new Vector2(Ship.transform.Find("Marsh2").position.x, Ship.transform.Find("Marsh2").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100 * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh2").position.x, Ship.transform.Find("Marsh2").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh2").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
                     }
                     if (ShipStatus.Marsh3)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100, new Vector2(Ship.transform.Find("Marsh3").position.x, Ship.transform.Find("Marsh3").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * 100 * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh3").position.x, Ship.transform.Find("Marsh3").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh3").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
                     }
@@ -139,7 +139,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value, new Vector2(Ship.transform.Find("Green").position.x, Ship.transform.Find("Green").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Green").position.x, Ship.transform.Find("Green").position.y));
                         }
                     }
                     break;
@@ -149,7 +149,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value, new Vector2(Ship.transform.Find("Blue").position.x, Ship.transform.Find("Blue").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Blue").position.x, Ship.transform.Find("Blue").position.y));
                         }
                     }
                     break;
@@ -159,7 +159,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value, new Vector2(Ship.transform.Find("Yellow").position.x, Ship.transform.Find("Yellow").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Yellow").position.x, Ship.transform.Find("Yellow").position.y));
                         }
                     }
                     break;
@@ -169,7 +169,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value, new Vector2(Ship.transform.Find("Pink").position.x, Ship.transform.Find("Pink").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Pink").position.x, Ship.transform.Find("Pink").position.y));
                         }
                     }
                     break;
@@ -179,7 +179,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value, new Vector2(Ship.transform.Find("DarkPink").position.x, Ship.transform.Find("DarkPink").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("DarkPink").position.x, Ship.transform.Find("DarkPink").position.y));
                         }
                     }
                     break;
@@ -189,7 +189,7 @@ public class Forse : MonoBehaviour
                         if (_Value != 0)
                         {
                             Debug.Log("done");
-                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value, new Vector2(Ship.transform.Find("See").position.x, Ship.transform.Find("See").position.y));
+                            Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * _Value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("See").position.x, Ship.transform.Find("See").position.y));
                         }
                     }
                     break;

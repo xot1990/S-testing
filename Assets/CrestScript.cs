@@ -43,6 +43,7 @@ public class CrestScript : MonoBehaviour
 
     public void DestDrag()
     {
+        Cursor.visible = false;
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         ZeroPos = CrestPos.GetComponent<RectTransform>().position;
 
@@ -76,7 +77,7 @@ public class CrestScript : MonoBehaviour
         ShipStatus.StartEction = false;
         ShipStatus.MoveX = false;
         ShipStatus.MoveY = false;
-
+        Cursor.visible = true;
 
     }
 
