@@ -6,6 +6,10 @@ public class SystemControler : MonoBehaviour
 {
     public static List<GameObject> SystemObjects;
     public static GameObject Star;
+    public static float TimeScaleConst = 0.001f;
+    public static float NowTimeScale = 1;
+    public static float PastTimeScale = 1;
+    
 
     private void Awake()
     {

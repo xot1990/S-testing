@@ -29,10 +29,14 @@ public class ButtonUI : MonoBehaviour
                         ShipStatus.Marsh3 = false;
                     }
                     break;
-                case "STB":
+                case "Angylar STB":
+                    {                        
+                        ShipStatus.AngSTB = false;
+                    }
+                    break;
+                case "Velocity STB":
                     {
-                        Debug.Log("done");
-                        ShipStatus.STB = false;
+                        ShipStatus.VelSTB = false;
                     }
                     break;
             }
@@ -58,9 +62,14 @@ public class ButtonUI : MonoBehaviour
                         ShipStatus.Marsh3 = true;
                     }
                     break;
-                case "STB":
+                case "Angylar STB":
                     {
-                        ShipStatus.STB = true;
+                        ShipStatus.AngSTB = true;
+                    }
+                    break;
+                case "Velocity STB":
+                    {
+                        ShipStatus.VelSTB = true;
                     }
                     break;
             }

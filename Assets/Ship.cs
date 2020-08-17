@@ -48,21 +48,21 @@ public class Ship : MonoBehaviour
 
             if (ShipStatus.ValueJoystickY > 0 && ShipStatus.ValueJoystickX == 0)
             {
-                ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-ShipStatus.Ship.transform.right * Mathf.Abs(ShipStatus.ValueJoystickY * ShipStatus.gravityconst), new Vector2(ShipStatus.ShuntingGreen.transform.position.x, ShipStatus.ShuntingGreen.transform.position.y));                
+                ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-ShipStatus.Ship.transform.right * Mathf.Abs(ShipStatus.ValueJoystickY * ShipStatus.gravityconst*SystemControler.TimeScaleConst), new Vector2(ShipStatus.ShuntingGreen.transform.position.x, ShipStatus.ShuntingGreen.transform.position.y));                
                 GameObject par = Instantiate(Part, ShipStatus.Ship.transform.Find("Green").position, Quaternion.Euler(90, 90, 90));
                 par.transform.parent = ShipStatus.Ship.transform;
             }
 
             if (ShipStatus.ValueJoystickY < 0 && ShipStatus.ValueJoystickX == 0)
             {
-                ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(ShipStatus.Ship.transform.right * Mathf.Abs(ShipStatus.ValueJoystickY * ShipStatus.gravityconst), new Vector2(ShipStatus.ShuntingBlue.transform.position.x, ShipStatus.ShuntingBlue.transform.position.y));
+                ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(ShipStatus.Ship.transform.right * Mathf.Abs(ShipStatus.ValueJoystickY * ShipStatus.gravityconst* SystemControler.TimeScaleConst), new Vector2(ShipStatus.ShuntingBlue.transform.position.x, ShipStatus.ShuntingBlue.transform.position.y));
                 GameObject par = Instantiate(Part, ShipStatus.Ship.transform.Find("Blue").position, Quaternion.Euler(90, 90, 90));
                 par.transform.parent = ShipStatus.Ship.transform;
             }
         }
         else
         {
-            if (ShipStatus.STB)
+            if (ShipStatus.AngSTB)
             {
                 if (ShipStatus.Ship.GetComponent<Rigidbody2D>().angularVelocity > 0)
                 {
@@ -85,13 +85,17 @@ public class Ship : MonoBehaviour
                     GameObject par2 = Instantiate(Part, ShipStatus.Ship.transform.Find("DarkPink").position, Quaternion.Euler(-180, 90, 90));
                     par2.transform.parent = ShipStatus.Ship.transform;
                 }
+               
+            }
 
-                /*if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
+            if (ShipStatus.VelSTB)
+            {
+                if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
                 {
 
-                    ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForce(-ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.normalized *5 * ShipStatus.gravityconst);
-                    if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0 && ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f) ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                }*/
+                    ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForce(-ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.normalized * 5 * ShipStatus.gravityconst * SystemControler.TimeScaleConst);
+                    if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude * 1000000 > 0 && ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude*1000000 < 0.1f) ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                }
             }
         }
     }

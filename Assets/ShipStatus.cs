@@ -7,7 +7,8 @@ public class ShipStatus : MonoBehaviour
     public static bool Marsh1 = true;
     public static bool Marsh2 = true;
     public static bool Marsh3 = true;
-    public static bool STB = true;
+    public static bool AngSTB = true;
+    public static bool VelSTB = true;
     public static bool shuntingGreen;
     public static bool shuntingBlue;
     public static bool shuntingYellow;
@@ -27,5 +28,5 @@ public class ShipStatus : MonoBehaviour
     public static bool StartEction;
     public static bool MoveX;
     public static bool MoveY;
-    public static float gravityconst =  5 * Mathf.Pow(10, -5);
+    public static float gravityconst =  5 * Mathf.Pow(10, -2);
 }

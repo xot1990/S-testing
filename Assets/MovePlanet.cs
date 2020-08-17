@@ -39,8 +39,13 @@ public class MovePlanet : MonoBehaviour
     void Update()
     {
         
-        move();
         
+        
+    }
+
+    private void FixedUpdate()
+    {
+        move();
     }
 
     public void move()

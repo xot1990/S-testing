@@ -13,6 +13,7 @@ public class Forse : MonoBehaviour
     public InputField Field;
     public GameObject Canvas;
     public GameObject Part;
+    float resault = 1;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class Forse : MonoBehaviour
         Value = GetFloat(Field.text, Value);
         Value = Mathf.Clamp(Value, 0, 10f);
         Field.text = "" + Value;
+        Value *= SystemControler.TimeScaleConst;
+        
     }
 
     public void Forses()
@@ -196,5 +199,33 @@ public class Forse : MonoBehaviour
                     
             }
         }
+    }
+
+    public void TimeScaler()
+    {
+        Value = GetFloat(Field.text, Value);
+        Value = Mathf.Clamp(Value, 0, 10000f);
+        SystemControler.TimeScaleConst = Value * 0.001f;
+        SystemControler.PastTimeScale = SystemControler.NowTimeScale;
+        SystemControler.NowTimeScale = Value;
+        
+        
+       
+
+        if (SystemControler.PastTimeScale > SystemControler.NowTimeScale)
+        {
+            resault = 1 / Mathf.Abs(SystemControler.NowTimeScale - SystemControler.PastTimeScale);
+        }
+        if (SystemControler.PastTimeScale < SystemControler.NowTimeScale)
+        {
+            resault = SystemControler.NowTimeScale - SystemControler.PastTimeScale;
+        }
+        if (SystemControler.PastTimeScale == SystemControler.NowTimeScale)
+        {
+            resault = 1;
+        }
+
+        Ship.GetComponent<Rigidbody2D>().velocity = Ship.GetComponent<Rigidbody2D>().velocity * resault;
+        Debug.Log(Ship.GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 }
