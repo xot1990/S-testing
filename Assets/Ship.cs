@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
@@ -15,11 +16,34 @@ public class Ship : MonoBehaviour
         ShipStatus.ShuntingPink = transform.Find("Pink").gameObject;
         ShipStatus.ShuntingDarkPink = transform.Find("DarkPink").gameObject;
         ShipStatus.ShuntingSee = transform.Find("See").gameObject;
+        ShipStatus.MarshScroll = GameObject.Find("MarshPowerControler");
         GameObject GO = GameObject.Find("Юпитер");
         transform.position = new Vector3(GO.transform.position.x + 20, GO.transform.position.y, GO.transform.position.z);
     }
 
-   
+
+    private void FixedUpdate()
+    {
+        if (ShipStatus.Marsh1)
+        {
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh1").position.x, transform.Find("Marsh1").position.y));
+            GameObject par = Instantiate(Part, transform.Find("Marsh1").position, Quaternion.Euler(90, 90, 90));
+            par.transform.parent = transform;
+        }
+        if (ShipStatus.Marsh2)
+        {
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh2").position.x, transform.Find("Marsh2").position.y));
+            GameObject par = Instantiate(Part, transform.Find("Marsh2").position, Quaternion.Euler(90, 90, 90));
+            par.transform.parent = transform;
+        }
+        if (ShipStatus.Marsh3)
+        {
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh3").position.x, transform.Find("Marsh3").position.y));
+            GameObject par = Instantiate(Part, transform.Find("Marsh3").position, Quaternion.Euler(90, 90, 90));
+            par.transform.parent = transform;
+        }
+    }
+
     void Update()
     {
         if (ShipStatus.StartEction)

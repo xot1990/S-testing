@@ -39,6 +39,13 @@ public class ButtonUI : MonoBehaviour
                         ShipStatus.VelSTB = false;
                     }
                     break;
+                case "M":
+                    {
+                        ShipStatus.Marsh1 = false;
+                        ShipStatus.Marsh2 = false;
+                        ShipStatus.Marsh3 = false;
+                    }
+                    break;
             }
             GetComponentInChildren<Toggle>().isOn = false;
             presed = false;
@@ -59,6 +66,13 @@ public class ButtonUI : MonoBehaviour
                     break;
                 case "M3":
                     {
+                        ShipStatus.Marsh3 = true;
+                    }
+                    break;
+                case "M":
+                    {
+                        ShipStatus.Marsh1 = true;
+                        ShipStatus.Marsh2 = true;
                         ShipStatus.Marsh3 = true;
                     }
                     break;

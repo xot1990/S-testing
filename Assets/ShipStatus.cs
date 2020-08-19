@@ -29,4 +29,5 @@ public class ShipStatus : MonoBehaviour
     public static bool MoveX;
     public static bool MoveY;
     public static float gravityconst =  5 * Mathf.Pow(10, -2);
+    public static GameObject MarshScroll;
 }

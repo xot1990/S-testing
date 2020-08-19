@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -26,12 +27,13 @@ public class Speedmeter : MonoBehaviour
     {
         
     }
+
     IEnumerator Velocitymeter()
     {
         while (true)
         {
             int i = 0;
-            while (i < 10)
+            while (i < 5)
             {
                 yield return new WaitForEndOfFrame();
                 i++;
@@ -64,6 +66,10 @@ public class Speedmeter : MonoBehaviour
             {
                 _velosity.text = "X Pull " + ShipStatus.ValueJoystickX;
                 _angularvelocity.text = "Y Pull " + ShipStatus.ValueJoystickY;
+            }
+            if (gameObject.name == "Power")
+            {
+                _velosity.text = "" + Math.Round(ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * 100,2) + "%"; 
             }
             i = 0;
         }
