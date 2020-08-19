@@ -15,6 +15,8 @@ public class Ship : MonoBehaviour
         ShipStatus.ShuntingPink = transform.Find("Pink").gameObject;
         ShipStatus.ShuntingDarkPink = transform.Find("DarkPink").gameObject;
         ShipStatus.ShuntingSee = transform.Find("See").gameObject;
+        GameObject GO = GameObject.Find("Юпитер");
+        transform.position = new Vector3(GO.transform.position.x + 20, GO.transform.position.y, GO.transform.position.z);
     }
 
    
