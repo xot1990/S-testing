@@ -54,7 +54,7 @@ public class MovePlanet : MonoBehaviour
         
         StarPos = Star.transform.position;
 
-        RandomAngle += Time.deltaTime * SystemControler.TimeScaleConst / (c*10);
+        RandomAngle += Time.deltaTime * (SystemControler.TimeScaleConst * 100) / (c*10);
         Xpos = Star.transform.position.x - Mathf.Cos(RandomAngle) * b ;
         Ypos = Star.transform.position.y - Mathf.Sin(RandomAngle) * a ;
         pos = new Vector3(Xpos,Ypos,0);

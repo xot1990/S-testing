@@ -26,19 +26,20 @@ public class Ship : MonoBehaviour
     {
         if (ShipStatus.Marsh1)
         {
-            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh1").position.x, transform.Find("Marsh1").position.y));
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst * 0.001f, new Vector2(transform.Find("Marsh1").position.x, transform.Find("Marsh1").position.y));
             GameObject par = Instantiate(Part, transform.Find("Marsh1").position, Quaternion.Euler(90, 90, 90));
             par.transform.parent = transform;
+            
         }
         if (ShipStatus.Marsh2)
         {
-            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh2").position.x, transform.Find("Marsh2").position.y));
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst * 0.001f, new Vector2(transform.Find("Marsh2").position.x, transform.Find("Marsh2").position.y));
             GameObject par = Instantiate(Part, transform.Find("Marsh2").position, Quaternion.Euler(90, 90, 90));
             par.transform.parent = transform;
         }
         if (ShipStatus.Marsh3)
         {
-            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(transform.Find("Marsh3").position.x, transform.Find("Marsh3").position.y));
+            GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst * 0.001f, new Vector2(transform.Find("Marsh3").position.x, transform.Find("Marsh3").position.y));
             GameObject par = Instantiate(Part, transform.Find("Marsh3").position, Quaternion.Euler(90, 90, 90));
             par.transform.parent = transform;
         }
@@ -114,7 +115,7 @@ public class Ship : MonoBehaviour
                
             }
 
-            if (ShipStatus.VelSTB)
+            /*if (ShipStatus.VelSTB)
             {
                 if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
                 {
@@ -122,7 +123,7 @@ public class Ship : MonoBehaviour
                     ShipStatus.Ship.GetComponent<Rigidbody2D>().AddForce(-ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.normalized * 5 * ShipStatus.gravityconst * SystemControler.TimeScaleConst);
                     if (ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude * 1000000 > 0 && ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity.magnitude*1000000 < 0.1f) ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
-            }
+            }*/
         }
     }
 }

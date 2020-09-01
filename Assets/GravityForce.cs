@@ -20,7 +20,7 @@ public class GravityForce : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         if (gameObject != SystemControler.Star) a = Mathf.Sqrt(GravityConst * SystemControler.Star.GetComponent<Rigidbody2D>().mass / SolDist)* GetComponent<Rigidbody2D>().mass;
         if (gameObject.name == "MatherShip") a = 0;
-        Debug.Log(a);
+
         body.AddForce(StartForce*a * SystemControler.TimeScaleConst,ForceMode2D.Impulse);
     }
 
@@ -30,23 +30,27 @@ public class GravityForce : MonoBehaviour
         
         
     }
+
     private void FixedUpdate()
     {
         foreach (var Obj in SystemControler.SystemObjects)
         {
             if (gameObject != Obj)
             {
-                dist = Vector3.Distance(transform.position, Obj.transform.position);
-                if (dist < 500)
+                
+                Vector2 dest = Obj.transform.position - transform.position;
+                Vector2 d = new Vector2(0, 1);
+                dest.Normalize();
+                dist = Vector2.Distance(Obj.transform.position, transform.position);
+                Vector2 forse = dest * GravityConst * ((body.mass * Obj.GetComponent<Rigidbody2D>().mass) / Mathf.Pow(dist, 2));
+                if (forse.magnitude * 1000 > 15) Obj.GetComponent<Rigidbody2D>().AddForce(-forse * SystemControler.TimeScaleConst);
+                if (gameObject.name == "Юпитер" && Obj.name == "MatherShip")
                 {
-                    Vector2 dest = Obj.transform.position - transform.position;
-                    Vector2 d = new Vector2(0, 1);
-                    dest.Normalize();
-                    Vector2 forse = dest * GravityConst * ((body.mass * Obj.GetComponent<Rigidbody2D>().mass) / Mathf.Pow(dist, 2));
-                    Obj.GetComponent<Rigidbody2D>().AddForce(-forse * SystemControler.TimeScaleConst);
-                    forses = forse.magnitude;
-                    Forses = forse;
+                   // Debug.Log(dist);
+                   // Debug.Log(forse.magnitude * 1000);
                 }
+
+
             }
         }
     }

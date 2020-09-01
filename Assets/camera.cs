@@ -18,12 +18,12 @@ public class camera : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             GetComponent<Camera>().orthographicSize += Input.GetAxis("Mouse ScrollWheel")*5;
-            Debug.Log("done1");
+            
         }
         else
         {
             GetComponent<Camera>().orthographicSize -= Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")*5);
-            Debug.Log("done2");
+
         }
     }
 

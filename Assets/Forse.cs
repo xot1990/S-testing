@@ -97,19 +97,20 @@ public class Forse : MonoBehaviour
                 {
                     if (ShipStatus.Marsh1)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh1").position.x, Ship.transform.Find("Marsh1").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst, new Vector2(Ship.transform.Find("Marsh1").position.x, Ship.transform.Find("Marsh1").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh1").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
+                        
                     }
                     if (ShipStatus.Marsh2)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh2").position.x, Ship.transform.Find("Marsh2").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst, new Vector2(Ship.transform.Find("Marsh2").position.x, Ship.transform.Find("Marsh2").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh2").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
                     }
                     if (ShipStatus.Marsh3)
                     {
-                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst, new Vector2(Ship.transform.Find("Marsh3").position.x, Ship.transform.Find("Marsh3").position.y));
+                        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * ShipStatus.gravityconst * SystemControler.TimeScaleConst, new Vector2(Ship.transform.Find("Marsh3").position.x, Ship.transform.Find("Marsh3").position.y));
                         GameObject par = Instantiate(Part, Ship.transform.Find("Marsh3").position, Quaternion.Euler(90, 90, 90));
                         par.transform.parent = Ship.transform;
                     }
@@ -204,7 +205,7 @@ public class Forse : MonoBehaviour
     public void TimeScaler()
     {
         Value = GetFloat(Field.text, Value);
-        Value = Mathf.Clamp(Value, 0, 10000f);
+        Value = Mathf.Clamp(Value, 0, 10000000f);
         SystemControler.TimeScaleConst = Value * 0.001f;
         SystemControler.PastTimeScale = SystemControler.NowTimeScale;
         SystemControler.NowTimeScale = Value;

@@ -40,11 +40,11 @@ public class Speedmeter : MonoBehaviour
             }
             if (gameObject.name == "SpeedMeter")
             {
-                Velocity = Ship.GetComponent<Rigidbody2D>().velocity.magnitude*SystemControler.TimeScaleConst * 1000;
-                if (Velocity * 10000 > 600000)
+                Velocity = Ship.GetComponent<Rigidbody2D>().velocity.magnitude / SystemControler.TimeScaleConst;
+                if (Velocity > 600000)
                 {
                     AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-                    _velosity.text = "Velocity \n" + Mathf.Round((Velocity * 10000)*1000/3600) + "m/s";
+                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity*1000/3600) + "m/s";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
                 else
@@ -53,13 +53,14 @@ public class Speedmeter : MonoBehaviour
                     _velosity.text = "Velocity \n" + Mathf.Round(Velocity * 10000) + " Km/h";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
-                if(Mathf.Round((Velocity * 10000) * 1000 / 3600) > 100000)
+                if(Mathf.Round(Velocity * 1000 / 3600) > 100000)
                 {
                     AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-                    _velosity.text = "Velocity \n" + Mathf.Round(((Velocity * 10000) * 1000 / 3600)/1000) + "Km/s";
+                    _velosity.text = "Velocity \n" + Mathf.Round((Velocity * 1000 / 3600)/1000) + "Km/s";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
-                
+                Debug.Log(Ship.GetComponent<Rigidbody2D>().velocity.magnitude);
+                Debug.Log(SystemControler.TimeScaleConst * 1000);
                 
             }
             if (gameObject.name == "CSpeedMeter")
