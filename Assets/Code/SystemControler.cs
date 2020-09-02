@@ -5,23 +5,27 @@ using UnityEngine;
 public class SystemControler : MonoBehaviour
 {
     public static List<GameObject> SystemObjects;
-    public static GameObject Star;
-    public static float TimeScaleConst = 0.001f;
+    
+    public static float TimeScaleConst = 1;
     public static float NowTimeScale = 1;
     public static float PastTimeScale = 1;
-    
+    public static bool TrajectoryOn;
+
+    public static GameObject Ship;
 
     private void Awake()
     {
-        Star = GameObject.Find("Star");
+        
         SystemObjects = new List<GameObject>();
 
         GameObject[] System = GameObject.FindGameObjectsWithTag("Object");
         foreach (var Sys in System)
         {
             SystemObjects.Add(Sys);
-            Sys.GetComponent<GravityForce>().SolDist = Vector2.Distance(Sys.transform.position, Star.transform.position);
+
         }
+        Ship = GameObject.Find("MatherShip");
+
     }
 
     void Start()
@@ -29,4 +33,10 @@ public class SystemControler : MonoBehaviour
         
     }
 
+    public static float GetFloat(string stringValue, float defaultValue)
+    {
+        float result = defaultValue;
+        float.TryParse(stringValue, out result);
+        return result;
+    }
 }

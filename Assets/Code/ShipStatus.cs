@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ShipStatus : MonoBehaviour
 {
-    public static bool Marsh1 = true;
-    public static bool Marsh2 = true;
-    public static bool Marsh3 = true;
-    public static bool AngSTB = true;
-    public static bool VelSTB = true;
+    public static bool Marsh1 = false;
+    public static bool Marsh2 = false;
+    public static bool Marsh3 = false;
+    public static bool AngSTB = false;
+    public static bool VelSTB = false;
     public static bool shuntingGreen;
     public static bool shuntingBlue;
     public static bool shuntingYellow;
@@ -27,7 +27,8 @@ public class ShipStatus : MonoBehaviour
     public static GameObject ShuntingSee;
     public static bool StartEction;
     public static bool MoveX;
-    public static bool MoveY;
-    public static float gravityconst =  5 * Mathf.Pow(10, -2);
+    public static bool MoveY;    
     public static GameObject MarshScroll;
+
+   
 }

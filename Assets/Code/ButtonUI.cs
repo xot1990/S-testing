@@ -16,46 +16,6 @@ public class ButtonUI : MonoBehaviour
             {
                 case "M1":
                     {
-                        ShipStatus.Marsh1 = false;
-                    }
-                    break;
-                case "M2":
-                    {
-                        ShipStatus.Marsh2 = false;
-                    }
-                    break;
-                case "M3":
-                    {
-                        ShipStatus.Marsh3 = false;
-                    }
-                    break;
-                case "Angylar STB":
-                    {                        
-                        ShipStatus.AngSTB = false;
-                    }
-                    break;
-                case "Velocity STB":
-                    {
-                        ShipStatus.VelSTB = false;
-                    }
-                    break;
-                case "M":
-                    {
-                        ShipStatus.Marsh1 = false;
-                        ShipStatus.Marsh2 = false;
-                        ShipStatus.Marsh3 = false;
-                    }
-                    break;
-            }
-            GetComponentInChildren<Toggle>().isOn = false;
-            presed = false;
-        }
-        else
-        {
-            switch (gameObject.name)
-            {
-                case "M1":
-                    {
                         ShipStatus.Marsh1 = true;
                     }
                     break;
@@ -88,6 +48,46 @@ public class ButtonUI : MonoBehaviour
                     break;
             }
             GetComponentInChildren<Toggle>().isOn = true;
+            presed = false;
+        }
+        else
+        {       
+            switch (gameObject.name)
+            {
+                case "M1":
+                    {
+                        ShipStatus.Marsh1 = false;
+                    }
+                    break;
+                case "M2":
+                    {
+                        ShipStatus.Marsh2 = false;
+                    }
+                    break;
+                case "M3":
+                    {
+                        ShipStatus.Marsh3 = false;
+                    }
+                    break;
+                case "Angylar STB":
+                    {
+                        ShipStatus.AngSTB = false;
+                    }
+                    break;
+                case "Velocity STB":
+                    {
+                        ShipStatus.VelSTB = false;
+                    }
+                    break;
+                case "M":
+                    {
+                        ShipStatus.Marsh1 = false;
+                        ShipStatus.Marsh2 = false;
+                        ShipStatus.Marsh3 = false;
+                    }
+                    break;
+            }
+            GetComponentInChildren<Toggle>().isOn = false;
             presed = true;
         }
        

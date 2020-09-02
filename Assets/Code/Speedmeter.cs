@@ -33,7 +33,7 @@ public class Speedmeter : MonoBehaviour
         while (true)
         {
             int i = 0;
-            while (i < 5)
+            while (i < 2)
             {
                 yield return new WaitForEndOfFrame();
                 i++;
@@ -44,23 +44,22 @@ public class Speedmeter : MonoBehaviour
                 if (Velocity > 600000)
                 {
                     AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity*1000/3600) + "m/s";
+                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity * 1000/3600) + "m/s";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
                 else
                 {
                     AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity * 10000) + " Km/h";
+                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity) + " Km/h";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
-                if(Mathf.Round(Velocity * 1000 / 3600) > 100000)
+                if(Mathf.Round(Velocity / 3600)  > 100000)
                 {
                     AngularVelosity = Ship.GetComponent<Rigidbody2D>().angularVelocity;
-                    _velosity.text = "Velocity \n" + Mathf.Round((Velocity * 1000 / 3600)/1000) + "Km/s";
+                    _velosity.text = "Velocity \n" + Mathf.Round(Velocity / 3600) + "Km/s";
                     _angularvelocity.text = "AngVelocity \n" + AngularVelosity;
                 }
-                Debug.Log(Ship.GetComponent<Rigidbody2D>().velocity.magnitude);
-                Debug.Log(SystemControler.TimeScaleConst * 1000);
+                
                 
             }
             if (gameObject.name == "CSpeedMeter")

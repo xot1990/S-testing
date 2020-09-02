@@ -62,22 +62,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ArrowScript.cs" />
-    <Compile Include="Assets\ButtonUI.cs" />
-    <Compile Include="Assets\camera.cs" />
-    <Compile Include="Assets\ClockScript.cs" />
-    <Compile Include="Assets\CrestScript.cs" />
-    <Compile Include="Assets\Forse.cs" />
-    <Compile Include="Assets\GravityForce.cs" />
-    <Compile Include="Assets\MovePlanet.cs" />
-    <Compile Include="Assets\RemoveScript.cs" />
-    <Compile Include="Assets\ResetScript.cs" />
-    <Compile Include="Assets\Ship.cs" />
-    <Compile Include="Assets\ShipStatus.cs" />
-    <Compile Include="Assets\Speedmeter.cs" />
-    <Compile Include="Assets\StationScript.cs" />
-    <Compile Include="Assets\SwitchingControlModes.cs" />
-    <Compile Include="Assets\SystemControler.cs" />
+    <Compile Include="Assets\Code\ArrowScript.cs" />
+    <Compile Include="Assets\Code\ButtonUI.cs" />
+    <Compile Include="Assets\Code\camera.cs" />
+    <Compile Include="Assets\Code\ClockScript.cs" />
+    <Compile Include="Assets\Code\CrestScript.cs" />
+    <Compile Include="Assets\Code\Forse.cs" />
+    <Compile Include="Assets\Code\GravityForce.cs" />
+    <Compile Include="Assets\Code\InputFildScript.cs" />
+    <Compile Include="Assets\Code\MovePlanet.cs" />
+    <Compile Include="Assets\Code\RemoveScript.cs" />
+    <Compile Include="Assets\Code\ResetScript.cs" />
+    <Compile Include="Assets\Code\Ship.cs" />
+    <Compile Include="Assets\Code\ShipStatus.cs" />
+    <Compile Include="Assets\Code\Speedmeter.cs" />
+    <Compile Include="Assets\Code\StationScript.cs" />
+    <Compile Include="Assets\Code\SwitchingControlModes.cs" />
+    <Compile Include="Assets\Code\SystemControler.cs" />
+    <Compile Include="Assets\Code\TimeScaleScript.cs" />
+    <Compile Include="Assets\Code\TrajectoryScript.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/X5X/Documents/S testing/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
