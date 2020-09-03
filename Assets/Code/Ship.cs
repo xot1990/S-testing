@@ -16,6 +16,8 @@ public class Ship : MonoBehaviour
     GameObject _ShuntingPink;
     GameObject _ShuntingDarkPink;
     GameObject _ShuntingSee;
+    Vector3 ShuntigForce;
+    Vector3 MarshForce;
 
     void Start()
     {
@@ -105,19 +107,29 @@ public class Ship : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        
+    }
+
     public void STBForces(GameObject Shunting)
     {
-        body.AddForceAtPosition(-Shunting.transform.up * Mathf.Abs(FrontForse) * SystemControler.TimeScaleConst * Time.deltaTime, new Vector2(Shunting.transform.position.x, Shunting.transform.position.y));
+        ShuntigForce = -Shunting.transform.up * Mathf.Abs(FrontForse) * 10 * SystemControler.TimeScaleConst * Time.deltaTime;
+        body.AddForceAtPosition(ShuntigForce, new Vector2(Shunting.transform.position.x, Shunting.transform.position.y));
+        
     }
 
     public void JoustickForces(GameObject Shunting)
     {
-        body.AddForceAtPosition(-Shunting.transform.up * Mathf.Abs(ShipStatus.ValueJoystickX * FrontForse) * SystemControler.TimeScaleConst * Time.deltaTime, new Vector2(Shunting.transform.position.x, Shunting.transform.position.y));        
+        ShuntigForce = -Shunting.transform.up * Mathf.Abs(FrontForse) * SystemControler.TimeScaleConst * Time.deltaTime;
+        body.AddForceAtPosition(-Shunting.transform.up * Mathf.Abs(ShipStatus.ValueJoystickX * FrontForse) * SystemControler.TimeScaleConst * Time.deltaTime, new Vector2(Shunting.transform.position.x, Shunting.transform.position.y));
+        
     }
 
     public void MarshForces(string MarshName)
     {
+        MarshForce = transform.up * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * MarshPower * Time.deltaTime;
+        body.AddForceAtPosition(MarshForce, new Vector2(transform.Find(MarshName).position.x, transform.Find(MarshName).position.y));
         
-        body.AddForceAtPosition(transform.up * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * MarshPower * Time.deltaTime, new Vector2(transform.Find(MarshName).position.x, transform.Find(MarshName).position.y));
     }
 }

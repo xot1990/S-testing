@@ -29,14 +29,14 @@ public class CrestScript : MonoBehaviour
         if (ShipStatus.MoveX)
         {            
             transform.position = new Vector2(X, ZeroPos.y);
-            ShipStatus.ValueJoystickX = (float)Math.Round((transform.position.x - ZeroPos.x) * 2.801f, 2);
+            ShipStatus.ValueJoystickX = Mathf.Clamp((float)Math.Round((transform.position.x - ZeroPos.x) * 2.801f, 2), -10, 10);
         }
 
         if (ShipStatus.MoveY)
         {
             
             transform.position = new Vector2(ZeroPos.x, Y);
-            ShipStatus.ValueJoystickY = (float)Math.Round((transform.position.y - ZeroPos.y) * 2.801f, 2);
+            ShipStatus.ValueJoystickY = Mathf.Clamp((float)Math.Round((transform.position.y - ZeroPos.y) * 2.801f, 2),-10,10);
         }
      
     }

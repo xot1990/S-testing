@@ -13,7 +13,9 @@ public class TrajectoryScript : MonoBehaviour
     Vector3[] Points;
     private Vector2 lastVelocity = Vector2.zero;
     private Vector2 A = Vector2.zero;
-
+    public Rigidbody2D GravityObj;
+    Vector2 Pos1;
+    Vector2 Pos2;
 
     void Start()
     {
@@ -27,30 +29,64 @@ public class TrajectoryScript : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(Vector3.Project(body.velocity, transform.right).magnitude * 50);
-        Debug.Log(A.magnitude * Mathf.Pow(50, 2) / 2);
+        A = (body.velocity - lastVelocity) / Time.deltaTime;
+        lastVelocity = body.velocity;
+
 
     }
 
     private void FixedUpdate()
     {
-        A = (body.velocity - lastVelocity) / Time.deltaTime;
-        lastVelocity = body.velocity;
+        
+        
+    }
 
-        Trajectory();
+    float a(float t)
+    {
+        return t * t / 2;
     }
 
     public void Trajectory()
     {
         Vector3[] Points = new Vector3[EstimatedTime];
 
+
         for (int i = 0; EstimatedTime > i; i++)
         {
-            float X = body.position.x + Vector3.Project(body.velocity, transform.up).magnitude * i + (Vector3.Project(A, transform.up).magnitude * Mathf.Pow(i, 2) / 2);
-            float Y = body.position.y + Vector3.Project(body.velocity, transform.right).magnitude * i + (Vector3.Project(A, transform.right).magnitude * Mathf.Pow(i, 2) / 2);
-
-            Points[i] = new Vector3(X, Y, 0);
+            
+            Vector2 V = body.position + body.velocity * i + (A * Mathf.Pow(i, 2) / 2);
+            
+            Points[i] = new Vector3(V.x,V.y,0);
+            
         }
         Line.SetPositions(Points);
     }
+
+    public void test()
+    {
+        Vector3[] Points = new Vector3[EstimatedTime];
+
+        float[] x = new float[EstimatedTime];
+        float[] y = new float[EstimatedTime];
+
+        
+        x[0] = body.position.x;
+        x[1] = body.position.x * 0.0001f;
+        y[0] = body.position.y;
+        y[1] = body.position.x * 0.0001f;
+
+        Points[0] = new Vector3(x[0], y[0], 0);
+
+        for (int i = 1; EstimatedTime - 1 > i; i++)
+        {
+            x[i + 1] = 2 * x[i] - x[i - 1] * a(i);
+            y[i + 1] = 2 * y[i] - y[i - 1] * a(i);
+
+            Points[i] = new Vector3(x[i], y[i], 0);
+            Debug.Log(x[i + 1]);
+            Debug.Log(y[i + 1]);
+        }
+        Line.SetPositions(Points);
+    }
+
 }

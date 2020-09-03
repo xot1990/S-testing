@@ -104,10 +104,7 @@ public class Forse : MonoBehaviour
         body.AddForceAtPosition(-Ship.transform.right * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * _Ship.MarshPower * Time.deltaTime, new Vector2(Ship.transform.Find(MarshName).position.x, Ship.transform.Find(MarshName).position.y));               
     }
 
-    public void FrontForses()
-    {
-        Ship.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * 100, new Vector2(Ship.transform.position.x - 0.129f, Ship.transform.position.y - 0.482f));
-    }
+   
 
     public void FindAllForses()
     {

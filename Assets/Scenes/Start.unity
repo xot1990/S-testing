@@ -3925,7 +3925,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590771947}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9712d81453e8e454e8005606c020f390, type: 3}
   m_Name: 
@@ -7440,6 +7440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelfOn: 0
   EstimatedTime: 0
+  GravityObj: {fileID: 590771949}
 --- !u!120 &1254122135
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -10310,7 +10311,7 @@ PrefabInstance:
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 24.4
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}

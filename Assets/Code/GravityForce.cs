@@ -34,7 +34,12 @@ public class GravityForce : MonoBehaviour
                 dest.Normalize();
                 dist = Vector2.Distance(Obj.transform.position, transform.position);
                 Vector2 forse = dest * GravityConst * ((body.mass * Obj.GetComponent<Rigidbody2D>().mass) / Mathf.Pow(dist, 2));
-                if (dist > 15) Obj.GetComponent<Rigidbody2D>().AddForce(-forse * SystemControler.TimeScaleConst);
+                if (dist > 15)
+                {
+                    Obj.GetComponent<Rigidbody2D>().AddForce(-forse * SystemControler.TimeScaleConst);
+                   
+                    
+                }
                 /*if (gameObject.name == "Юпитер" && Obj.name == "MatherShip")
                 {
                     Debug.Log(dist);
