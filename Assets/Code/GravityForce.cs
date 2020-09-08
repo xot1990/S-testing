@@ -32,12 +32,13 @@ public class GravityForce : MonoBehaviour
                 Vector2 dest = Obj.transform.position - transform.position;
                 Vector2 d = new Vector2(0, 1);
                 dest.Normalize();
-                dist = Vector2.Distance(Obj.transform.position, transform.position);
-                Vector2 forse = dest * GravityConst * ((body.mass * Obj.GetComponent<Rigidbody2D>().mass) / Mathf.Pow(dist, 2));
+                dist = Vector3.Distance(Obj.transform.position, transform.position);
+                Vector3 forse = dest * GravityConst * ((body.mass * Obj.GetComponent<Rigidbody2D>().mass) / Mathf.Pow(dist, 2));
                 if (dist > 15)
                 {
                     Obj.GetComponent<Rigidbody2D>().AddForce(-forse * SystemControler.TimeScaleConst);
-                   
+                    
+                    TrajectoryScript.GForces += -forse;
                     
                 }
                 /*if (gameObject.name == "Юпитер" && Obj.name == "MatherShip")

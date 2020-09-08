@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -38,19 +39,24 @@ public class Ship : MonoBehaviour
         if (ShipStatus.Marsh1)
         {
             MarshForces("Marsh1");
+            
         }
         if (ShipStatus.Marsh2)
         {
             MarshForces("Marsh2");
+            
         }
         if (ShipStatus.Marsh3)
         {
             MarshForces("Marsh3");
+            
         }
     }
 
     void Update()
     {
+        if (Mathf.Abs(body.angularVelocity) < 2f && ShipStatus.AngSTB) body.angularVelocity = 0;
+
         if (ShipStatus.StartEction)
         {
             if (ShipStatus.ValueJoystickY == 0 && ShipStatus.ValueJoystickX < 0)
@@ -92,7 +98,7 @@ public class Ship : MonoBehaviour
                     STBForces(_ShuntingPink);
                     STBForces(_ShuntingDarkPink);
                 }
-                if (Mathf.Abs(body.angularVelocity) < 0.5f) body.angularVelocity = 0;
+                
             }
 
             if (ShipStatus.VelSTB)
@@ -106,6 +112,8 @@ public class Ship : MonoBehaviour
             }
         }
     }
+
+    
 
     private void LateUpdate()
     {
@@ -129,7 +137,9 @@ public class Ship : MonoBehaviour
     public void MarshForces(string MarshName)
     {
         MarshForce = transform.up * ShipStatus.MarshScroll.GetComponent<Scrollbar>().value * MarshPower * Time.deltaTime;
-        body.AddForceAtPosition(MarshForce, new Vector2(transform.Find(MarshName).position.x, transform.Find(MarshName).position.y));
+        //body.AddForceAtPosition(MarshForce, new Vector2(transform.Find(MarshName).position.x, transform.Find(MarshName).position.y));
+        body.AddForce(MarshForce);
+        TrajectoryScript.Forces += MarshForce;
         
     }
 }
