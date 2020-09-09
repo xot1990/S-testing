@@ -27,25 +27,9 @@ public class TimeScaleScript : MonoBehaviour
     public void TimeScaler()
     {
         Value = SystemControler.GetFloat(Field.text, Value);
-        Value = Mathf.Clamp(Value, 0, 10000000f);
-        SystemControler.TimeScaleConst = Value;
-        SystemControler.PastTimeScale = SystemControler.NowTimeScale;
-        SystemControler.NowTimeScale = Value;
-
-        if (SystemControler.PastTimeScale > SystemControler.NowTimeScale)
-        {
-            resault = 1 / Mathf.Abs(SystemControler.NowTimeScale - SystemControler.PastTimeScale);
-        }
-        if (SystemControler.PastTimeScale < SystemControler.NowTimeScale)
-        {
-            resault = SystemControler.NowTimeScale - SystemControler.PastTimeScale;
-        }
-        if (SystemControler.PastTimeScale == SystemControler.NowTimeScale)
-        {
-            resault = 1;
-        }
-
-        body.velocity = body.velocity * resault;
+        Value = Mathf.Clamp(Value, 0, 100f);
+        
         CurrentScale.text = "X" + SystemControler.NowTimeScale;
+        Time.timeScale = Value;
     }
 }
