@@ -21,9 +21,14 @@ public class TrajectoryScript : MonoBehaviour
     public static Vector3 GForces;
     public int iter;
     float M;
+    public float K = 1f;
     Vector2[] Vsum;
     Vector2[] Asum;
     Vector2[] VGsum;
+    Vector2[] VGSsum;
+    bool GravityOn;
+    int k;
+    public GameObject Spot;
 
     Vector2 Kv1;
     Vector2 Kv2;
@@ -39,9 +44,9 @@ public class TrajectoryScript : MonoBehaviour
     {
         body = transform.GetComponent<Rigidbody2D>();
         Line = GetComponent<LineRenderer>();
-        EstimatedTime = 1000;
+        EstimatedTime = 500;
         Line.positionCount = EstimatedTime;
-        M = 0.227f * GravityObj.mass;
+        
     }
 
     
@@ -55,11 +60,13 @@ public class TrajectoryScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
+        
         A = Forces / body.mass;
-        Ag = GForces / body.mass;
-        Forces = Vector2.zero;
 
+        body.AddForce(Gforce());
+
+        Forces = Vector2.zero;
+       
     }
 
     
@@ -111,19 +118,43 @@ public class TrajectoryScript : MonoBehaviour
         for (int i = 0; N > i; i++)
         {
             iter++;
-            sum += V((0 + (i - 1) * h) + h / 2, h);
+            sum += V((0 + (i - 1) * h) + h / 2, h);           
+
             Vsum[i] = sum;
         }
        
         return Vsum;
     }
 
-    Vector2[] _VGsum(float t, float h)
+    Vector2[] _VGSsum(float t, float h)
     {
+        Vector2 sum = new Vector2();
         float n = t / h;
         int N = (int)Mathf.Round(n);
+        VGSsum = new Vector2[N];
+
+        for (int i = 0; N > i; i++)
+        {
+            iter++;
+            sum += _V((0 + (i - 1) * h) + h / 2, h);
+            
+            VGSsum[i] = sum;
+        }
+
+        return VGSsum;
+    }
+
+    Vector2[] _VGsum(float t, float h)
+    {
+        M = K * GravityObj.mass;
+        float n = t / h;
+        int N = (int)Mathf.Round(n);
+        Vector2 sum = new Vector2();
         VGsum = new Vector2[N];
-        R =  (-GravityObj.transform.position + transform.position) * Vector2.Distance(GravityObj.transform.position, transform.position);
+        Vector2 D = -GravityObj.transform.position + transform.position;
+        D.Normalize();
+
+        R =  D * Vector2.Distance(GravityObj.transform.position, transform.position);
 
         Kv1 = new Vector2();
         Kv2 = new Vector2();
@@ -135,28 +166,41 @@ public class TrajectoryScript : MonoBehaviour
         Kr4 = new Vector2();
         Vector2 V = body.velocity;
 
-        for (int i = 0; n > i; i++)
+        for (int i = 0; N > i; i++)
         {
             iter++;
             Kr1 = V;
-            Kv1 = (M * (R/Mathf.Pow(R.magnitude,3)));
-            Kr2 = V + Kv1 * h / 2;
-            Kv2 = (M * (R / Mathf.Pow(R.magnitude, 3))) + Kr1 * h / 2;
-            Kr3 = V + h * Kv2 / 2;
-            Kv3 = (M * (R / Mathf.Pow(R.magnitude, 3))) + Kr2 * h / 2;
+            Kv1 = -M * (R/Mathf.Pow(R.magnitude,3));
+            Kr2 = V + (Kv1 / 2) * h;
+            Kv2 = -M * ((R + ((Kr1 / 2) * h)) / Mathf.Pow((R + ((Kr1 / 2) * h)).magnitude, 3));
+            Kr3 = V + (h / 2) * Kv2;
+            Kv3 = -M * ((R + ((Kr2 / 2) * h)) / Mathf.Pow((R + ((Kr2 / 2) * h)).magnitude, 3));
             Kr4 = V + h * Kv3;
-            Kv4 = (M * (R / Mathf.Pow(R.magnitude, 3))) + Kr3 * h;
+            Kv4 = -M * ((R + ((Kr3 / 2) * h)) / Mathf.Pow((R + ((Kr3 / 2) * h)).magnitude, 3));
 
-            R = R + (Kr1 + Kr2 + Kr3 + Kr4) * h / 6;
-            V = V + (Kv1 + Kv2 + Kv3 + Kv4) * h / 6;
-
-            VGsum[i] = V;
+            R = R + (Kr1 + 2*Kr2 + 2*Kr3 + Kr4) * (h / 6);
+            V = V + (Kv1 + 2*Kv2 + 2*Kv3 + Kv4) * (h / 6);
+            sum += V;
+            VGsum[i] = sum;
             
         }
 
         return VGsum;
     }
 
+    
+    Vector2 Gforce()
+    {
+        Vector2 Force = new Vector2();
+        Vector2 D = GravityObj.position - body.position;
+        D.Normalize();
+        float R = Vector2.Distance(body.position, GravityObj.position);
+        if (R < 500) GravityOn = true;
+        else GravityOn = false;
+        Force = D * (body.mass * GravityObj.mass / Mathf.Pow(R, 2));
+        return Force;
+    }
+     
     Vector2 V(float t, float h)
     {
 
@@ -166,13 +210,27 @@ public class TrajectoryScript : MonoBehaviour
         return body.velocity + h * Asum[N];
     }
 
-    Vector2 X(float t, float h)
+    Vector2 _V(float t, float h)
     {
-        
+
         float n = t / h;
         int N = (int)Mathf.Round(n);
         iter++;
-        return body.position + h * (Vsum[N] + VGsum[N]);
+        return h * Asum[N];
+    }
+
+    Vector2 X(float t, float h)
+    {
+        Vector2 X = new Vector2();
+        float n = t / h;
+        int N = (int)Mathf.Round(n);
+        iter++;
+        if (A.magnitude == 0 && GravityOn) X = body.position + h * VGsum[N];
+        if (A.magnitude == 0 && !GravityOn) X = body.position + h * Vsum[N];
+        if (A.magnitude != 0 && GravityOn) X = body.position + h * VGSsum[N] + h * VGsum[N];
+
+
+        return X;
     }
 
     public void test()
@@ -184,6 +242,7 @@ public class TrajectoryScript : MonoBehaviour
         _Asum(EstimatedTime, h);
         _Vsum(EstimatedTime, h);
         _VGsum(EstimatedTime, h);
+        _VGSsum(EstimatedTime, h);
 
         for (int i = 0; EstimatedTime > i; i++)
         {

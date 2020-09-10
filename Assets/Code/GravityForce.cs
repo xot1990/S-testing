@@ -5,7 +5,7 @@ using UnityEngine;
 public class GravityForce : MonoBehaviour
 {
     
-    float GravityConst = 0.277f;
+    float GravityConst = 1f;
     Rigidbody2D body;
     public float dist;   
    
