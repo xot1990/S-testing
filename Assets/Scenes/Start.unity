@@ -7361,6 +7361,7 @@ MonoBehaviour:
   iter: 0
   K: 1
   Spot: {fileID: 8998707067605324400, guid: 2146b0da0f47d254b89d5a9bacc87f42, type: 3}
+  Grav: 0
 --- !u!120 &1254122135
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -10303,12 +10304,12 @@ PrefabInstance:
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 636
+      value: 1266
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.4
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
@@ -10328,12 +10329,12 @@ PrefabInstance:
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
@@ -10353,7 +10354,7 @@ PrefabInstance:
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 777080527605978602, guid: 23aeaf8015e48e345bc1908c8016bb18,
         type: 3}

@@ -19,6 +19,7 @@ public class Ship : MonoBehaviour
     GameObject _ShuntingSee;
     Vector3 ShuntigForce;
     Vector3 MarshForce;
+    int i= 0;
 
     void Start()
     {
@@ -39,7 +40,8 @@ public class Ship : MonoBehaviour
         if (ShipStatus.Marsh1)
         {
             MarshForces("Marsh1");
-            
+            i++;
+            Debug.Log(i);
         }
         if (ShipStatus.Marsh2)
         {
