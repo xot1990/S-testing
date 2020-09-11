@@ -32,6 +32,7 @@ public class TrajectoryScript : MonoBehaviour
     public GameObject Spot;
     public bool Grav;
     Vector2 Vstart;
+    public float R;
 
     Vector2 Kv1;
     Vector2 Kv2;
@@ -41,7 +42,7 @@ public class TrajectoryScript : MonoBehaviour
     Vector2 Kr2;
     Vector2 Kr3;
     Vector2 Kr4;
-    Vector2 R;
+    Vector2 Rg;
 
     void Start()
     {
@@ -66,7 +67,7 @@ public class TrajectoryScript : MonoBehaviour
         
         A = Forces / body.mass;
 
-        float R = Vector2.Distance(body.position, GravityObj.position);
+        R = Vector2.Distance(body.position, GravityObj.position);
         if (R < 500)
         {
             GravityOn = true;
@@ -127,7 +128,7 @@ public class TrajectoryScript : MonoBehaviour
         Vector2 D = -GravityObj.position + body.position;
         D.Normalize();
 
-        R =  D * Vector2.Distance(GravityObj.position, body.position);
+        Rg =  D * Vector2.Distance(GravityObj.position, body.position);
 
         Kv1 = new Vector2();
         Kv2 = new Vector2();
@@ -143,15 +144,15 @@ public class TrajectoryScript : MonoBehaviour
         {
             
             Kr1 = V;
-            Kv1 = -M * (R/Mathf.Pow(R.magnitude,3));
+            Kv1 = -M * (Rg/Mathf.Pow(Rg.magnitude,3));
             Kr2 = V + (Kv1 / 2) * h + A;
-            Kv2 = -M * ((R + ((Kr1 / 2) * h)) / Mathf.Pow((R + ((Kr1 / 2) * h)).magnitude, 3)) + A;
+            Kv2 = -M * ((Rg + ((Kr1 / 2) * h)) / Mathf.Pow((Rg + ((Kr1 / 2) * h)).magnitude, 3)) + A;
             Kr3 = V + (h / 2) * Kv2;
-            Kv3 = -M * ((R + ((Kr2 / 2) * h)) / Mathf.Pow((R + ((Kr2 / 2) * h)).magnitude, 3)) + A;
+            Kv3 = -M * ((Rg + ((Kr2 / 2) * h)) / Mathf.Pow((Rg + ((Kr2 / 2) * h)).magnitude, 3)) + A;
             Kr4 = V + h * Kv3;
-            Kv4 = -M * ((R + ((Kr3 / 2) * h)) / Mathf.Pow((R + ((Kr3 / 2) * h)).magnitude, 3)) + A;
+            Kv4 = -M * ((Rg+ ((Kr3 / 2) * h)) / Mathf.Pow((Rg + ((Kr3 / 2) * h)).magnitude, 3)) + A;
 
-            R = R + (Kr1 + 2*Kr2 + 2*Kr3 + Kr4) * (h / 6);
+            Rg = Rg + (Kr1 + 2*Kr2 + 2*Kr3 + Kr4) * (h / 6);
             V = V + (Kv1 + 2*Kv2 + 2*Kv3 + Kv4) * (h / 6);
             sum += V;
             VGsum[i] = sum;
@@ -232,8 +233,7 @@ public class TrajectoryScript : MonoBehaviour
             }
             
         }
-        Debug.Log(iter);
-        Debug.Log(Points.Count);
+        
         Line.positionCount = Points.Count;
         Line.SetPositions(Points.ToArray());
         

@@ -28,17 +28,17 @@ public class SwitchingControlModes : MonoBehaviour, IPointerUpHandler
 
 
 
-        if (Scroll.value == 1)
+        if (Scroll.value == 0)
         {
             ManualControl.SetActive(false);
             ComputerControl.SetActive(true);
-            StarValue = 1;
+            StarValue = 0;
         }
-        else if (Scroll.value == 0)
+        else if (Scroll.value == 1)
         {
             ManualControl.SetActive(true);
             ComputerControl.SetActive(false);
-            StarValue = 0;
+            StarValue = 1;
         }
 
         Scroll.interactable = false;

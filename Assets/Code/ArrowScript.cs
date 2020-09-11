@@ -14,7 +14,7 @@ public class ArrowScript : MonoBehaviour
    
     void Update()
     {
-        //transform.rotation = Quaternion.Euler(0,0, Vector2.SignedAngle(ShipStatus.Ship.transform.up,ShipStatus.Ship.GetComponent<Rigidbody2D>().velocity)-90);
+        transform.rotation = Ship.transform.rotation;
         
     }
 }

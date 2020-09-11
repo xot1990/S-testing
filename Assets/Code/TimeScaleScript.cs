@@ -29,7 +29,7 @@ public class TimeScaleScript : MonoBehaviour
         Value = SystemControler.GetFloat(Field.text, Value);
         Value = Mathf.Clamp(Value, 0, 100f);
         
-        CurrentScale.text = "X" + SystemControler.NowTimeScale;
+        CurrentScale.text = "X" + Value;
         Time.timeScale = Value;
     }
 }
